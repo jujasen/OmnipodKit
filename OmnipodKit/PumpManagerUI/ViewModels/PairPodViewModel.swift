@@ -74,7 +74,7 @@ class PairPodViewModel: ObservableObject, Identifiable {
         var nextActionButtonDescription: String {
             switch self {
             case .ready:
-                return LocalizedString("Pair Pod", comment: "Pod pairing action button text while ready to pair")
+                return LocalizedString("Pod Is Filled – Pair", comment: "Pod pairing action button text while ready to pair, after filling")
             case .error:
                 return LocalizedString("Retry", comment: "Pod pairing action button text while showing error")
             case .pairing:

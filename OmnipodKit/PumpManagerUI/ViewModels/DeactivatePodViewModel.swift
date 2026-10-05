@@ -154,10 +154,13 @@ class DeactivatePodViewModel: ObservableObject, Identifiable {
             }
         }
 
+        if !text.isEmpty && !text.hasSuffix("\n") {
+            text += "\n"
+        }
         if podAttachedToBody {
-            text += LocalizedString("Please deactivate the pod. When deactivation is complete, you may remove it and pair a new pod.", comment: "Instructions for deactivate pod when pod is on body")
+            text += LocalizedString("To put on a new pod, you first need to deactivate the old one.\n\nSlide the switch below to deactivate it. When it is done, you can remove the old pod from your body.", comment: "Instructions for the first step of start new pod when the old pod is on body")
         } else {
-            text += LocalizedString("Please deactivate the pod. When deactivation is complete, you may pair a new pod.", comment: "Instructions for deactivate pod when pod not on body")
+            text += LocalizedString("To put on a new pod, you first need to deactivate the current one.\n\nSlide the switch below to deactivate it.", comment: "Instructions for the first step of start new pod when the pod is not on body")
         }
 
         self.podDeactivator = podDeactivator

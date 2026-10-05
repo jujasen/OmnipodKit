@@ -22,6 +22,8 @@ struct DeactivatePodView: View {
     var body: some View {
         GuidePage(content: {
             VStack {
+                PodChangeStepHeader(step: .deactivate)
+
                 LeadingImage("Pod")
 
                 HStack {
@@ -72,7 +74,7 @@ struct DeactivatePodView: View {
             .padding()
         }
         .alert(isPresented: $removePodModalIsPresented) { removePodModal }
-        .navigationTitle(LocalizedString("Deactivate Pod", comment: "navigation title for Deactivate Pod"))
+        .navigationTitle(LocalizedString("Start New Pod", comment: "navigation title for the deactivate step of start new pod"))
         .navigationBarTitleDisplayMode(.automatic)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(trailing:

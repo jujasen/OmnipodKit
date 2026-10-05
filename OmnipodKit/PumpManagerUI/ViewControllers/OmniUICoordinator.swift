@@ -244,7 +244,7 @@ class OmniUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             }
             let view = DeactivatePodView(viewModel: viewModel)
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Deactivate Pod", comment: "Title for deactivate pod screen")
+            hostedView.navigationItem.title = LocalizedString("Start New Pod", comment: "Title for the deactivate step of start new pod")
             return hostedView
 
         case .settings:
@@ -292,7 +292,7 @@ class OmniUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             }
 
             let view = hostingController(rootView: PairPodView(viewModel: viewModel).onAppear(perform: {UIApplication.shared.isIdleTimerDisabled = true}), onDisappear: {UIApplication.shared.isIdleTimerDisabled = false})
-            view.navigationItem.title = String(format: LocalizedString("Pair Pod", comment: "Title for pair pod screen"))
+            view.navigationItem.title = LocalizedString("Fill Pod", comment: "Title for the fill and pair step of start new pod")
             view.navigationItem.backButtonDisplayMode = .generic
             return view
 
@@ -305,7 +305,7 @@ class OmniUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 didRequestDeactivation: { [weak self] in
                     self?.navigateTo(.deactivate)
                 },
-                podTabColor: pumpManager.podType.tabColor
+                podType: pumpManager.podType
             )
 
             let vc = hostingController(rootView: view.onAppear(perform: {UIApplication.shared.isIdleTimerDisabled = true}), onDisappear: {UIApplication.shared.isIdleTimerDisabled = false})

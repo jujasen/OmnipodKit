@@ -17,35 +17,20 @@ struct PairPodView: View {
 
     @State private var cancelModalIsPresented: Bool = false
 
+    @Environment(\.appName) private var appName
+
     var body: some View {
         GuidePage(content: {
             VStack {
-                LeadingImage(self.viewModel.podType.podBottomTabImage)
+                PodChangeStepHeader(step: .fill)
 
-                let podTypeDescription = self.viewModel.podType.description
-                Text(podTypeDescription)
-                    .font(.title)
-                Spacer()
-                Spacer()
+                FillPodIllustration(podType: self.viewModel.podType)
+
+                Text(self.viewModel.podType.description)
+                    .font(.title2)
                 HStack {
-                    InstructionList(instructions: self.viewModel.podType.isEros ?
-                        [
-                            String(format: LocalizedString("Fill a new %1$@ pod with U-100 Insulin (leave %2$@ needle cap on). Listen for 2 beeps.",
-                                comment: "Label text for step 1 of Eros pair pod instructions (1: pod type name) (2: pod tab color"),
-                                   podTypeDescription, self.viewModel.podType.tabColor),
-                            LocalizedString("Keep the RileyLink about 6 inches from the pod during pairing.",
-                                comment: "Label text for step 2 of Eros pair pod instructions")
-                        ]
-                            :
-                        [
-                            String(format: LocalizedString("Fill a new %1$@ pod with U-100 Insulin (leave %2$@ needle cap on).",
-                                comment: "Label text for step 1 of non-Eros pair pod instructions (1: pod type name) (2: pod tab color"),
-                                   podTypeDescription, self.viewModel.podType.tabColor),
-                            LocalizedString("Listen for 2 beeps.",
-                                comment: "Label text for step 2 of non-Eros pair pod instructions")
-                        ]
-                    )
-                    .disabled(viewModel.state.instructionsDisabled)
+                    InstructionList(instructions: fillInstructions)
+                        .disabled(viewModel.state.instructionsDisabled)
                 }
                 .padding(.bottom, 8)
             }
@@ -120,6 +105,22 @@ struct PairPodView: View {
 
     }
         
+    private var fillInstructions: [String] {
+        var instructions = [
+            LocalizedString("Use the syringe and needle that came with the pod. Draw a little over 100 units of insulin into the syringe.", comment: "Fill pod step: draw up insulin"),
+            self.viewModel.podType.tabColor == "blue" ?
+                LocalizedString("Find the fill port on the bottom of the pod, where the arrow points. Leave the blue needle cap on.", comment: "Fill pod step: find fill port (pod with blue needle cap)") :
+                LocalizedString("Find the fill port on the bottom of the pod, where the arrow points. Leave the clear needle cap on.", comment: "Fill pod step: find fill port (pod with clear needle cap)"),
+            LocalizedString("Insert the needle straight down into the fill port, completely vertical at 90 degrees.", comment: "Fill pod step: insert syringe needle at 90 degrees"),
+            LocalizedString("Push the plunger slowly until the pod beeps 2 times.", comment: "Fill pod step: fill slowly until 2 beeps"),
+        ]
+        if self.viewModel.podType.isEros {
+            instructions.append(LocalizedString("Keep the RileyLink about 6 inches from the pod during pairing.", comment: "Label text for step 2 of Eros pair pod instructions"))
+        }
+        instructions.append(String(format: LocalizedString("When you have heard the 2 beeps, keep the phone close to the pod and tap the button below to pair it with %1$@.", comment: "Fill pod step: pair after beeps (1: app name)"), appName))
+        return instructions
+    }
+
     var cancelButton: some View {
         Button(LocalizedString("Cancel", comment: "Cancel button text in navigation bar on pair pod UI")) {
             if viewModel.podIsActivated {

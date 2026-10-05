@@ -23,11 +23,13 @@ struct InsertCannulaView: View {
     var body: some View {
         GuidePage(content: {
             VStack {
-                LeadingImage("Pod")
+                PodChangeStepHeader(step: .insert)
+
+                InsertCannulaIllustration(isFinished: viewModel.state.isFinished)
 
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Slide the switch below to start cannula insertion.", comment: "Label text for step one of insert cannula instructions"),
+                        LocalizedString("When you slide the switch below, the pod counts down and then inserts the needle.", comment: "Label text for step one of insert cannula instructions"),
                         LocalizedString("Wait until insertion is completed.", comment: "Label text for step two of insert cannula instructions"),
                     ])
                     .disabled(viewModel.state.instructionsDisabled)

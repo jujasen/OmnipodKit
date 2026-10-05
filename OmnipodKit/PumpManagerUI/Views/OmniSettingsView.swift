@@ -255,6 +255,27 @@ struct OmniSettingsView: View  {
         })
     }
 
+    /// The way into changing pods: the guide starts by deactivating the current pod.
+    func startNewPodRow(action: @escaping () -> Void) -> some View {
+        let lifeState = self.viewModel.lifeState
+        return Button(action: action) {
+            HStack(spacing: 12) {
+                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    .font(.system(size: 26))
+                    .foregroundColor(lifeState.nextPodLifecycleActionColor)
+                Text(lifeState.nextPodLifecycleActionDescription)
+                    .font(.headline)
+                    .foregroundColor(lifeState.nextPodLifecycleActionColor)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundColor(Color(UIColor.tertiaryLabel))
+            }
+            .padding(.vertical, 4)
+        }
+        .accessibility(identifier: "button_start_new_pod")
+    }
+
     var headerImage: some View {
         VStack(alignment: .center) {
             Image(frameworkImage: "Pod")
@@ -326,6 +347,14 @@ struct OmniSettingsView: View  {
                 }
             }
 
+            if self.viewModel.lifeState.nextPodLifecycleAction == .deactivate {
+                Section {
+                    startNewPodRow {
+                        self.viewModel.navigateTo?(.deactivate)
+                    }
+                }
+            }
+
             // Persistent advisory for InPlay-variant pods on affected iPhone models (iPhone 16
             // family / iPhone 17e): connection establishment can stall and is retried
             // automatically, so slower-than-normal connects are expected. Tap for details.
@@ -373,7 +402,7 @@ struct OmniSettingsView: View  {
                 // If need to pair a pod, display this as the only action
                 if lifeState.nextPodLifecycleAction == .pairAndPrime {
                     Section() {
-                        Button(action: {
+                        startNewPodRow {
                             if self.viewModel.podType == unknownOmnipodType {
                                 self.viewModel.navigateTo?(.selectPodType)
                             } else if self.viewModel.podType.isO5 &&
@@ -390,9 +419,6 @@ struct OmniSettingsView: View  {
                             } else {
                                 self.viewModel.navigateTo?(.pairAndPrime)
                             }
-                        }) {
-                            Text(lifeState.nextPodLifecycleActionDescription)
-                                .foregroundColor(lifeState.nextPodLifecycleActionColor)
                         }
                     }
                 } else {
@@ -438,15 +464,6 @@ struct OmniSettingsView: View  {
                     }
                 }
                 .disabled(cancelingTempBasal || !self.viewModel.podOk)
-
-                Section() {
-                    Button(action: {
-                        self.viewModel.navigateTo?(.deactivate)
-                    }) {
-                        Text(lifeState.nextPodLifecycleActionDescription)
-                            .foregroundColor(lifeState.nextPodLifecycleActionColor)
-                    }
-                }
             }
 
             if self.viewModel.podType.isEros {

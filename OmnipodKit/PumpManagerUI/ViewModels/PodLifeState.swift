@@ -81,21 +81,22 @@ enum PodLifeState {
     
     var nextPodLifecycleActionDescription: String {
         switch self {
-        case .podActivating, .noPod:
+        case .podActivating:
             return LocalizedString("Pair Pod", comment: "Settings page link description when next lifecycle action is to pair new pod")
         case .podDeactivating:
             return LocalizedString("Finish deactivation", comment: "Settings page link description when next lifecycle action is to finish deactivation")
         default:
-            return LocalizedString("Deactivate Pod", comment: "Settings page link description when next lifecycle action is to deactivate pod")
+            // Covers both no pod and an active pod: changing pods starts with deactivating the old one.
+            return LocalizedString("Start New Pod", comment: "Settings page link description that starts the guide for changing to a new pod")
         }
     }
     
     var nextPodLifecycleActionColor: Color {
         switch self {
-        case .podActivating, .noPod:
-            return .accentColor
-        default:
+        case .podDeactivating:
             return .red
+        default:
+            return .accentColor
         }
     }
 

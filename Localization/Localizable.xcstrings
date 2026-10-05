@@ -77933,6 +77933,215 @@
     },
     "Your pod uses an “InPlay” Bluetooth radio, and your phone (%1$@) is a model known to trigger a bug in that radio’s firmware. When it happens, the Bluetooth connection silently stalls while being established." : {
       "comment" : "InPlay connection info: what is happening (1: iPhone model name)"
+    },
+    "Fill Pod" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fyll på pod"
+          }
+        }
+      }
+    },
+    "Find the fill port on the bottom of the pod, where the arrow points. Leave the blue needle cap on." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finn fyllehullet på undersiden av podden, der pilen peker. La den blå beskyttelsen sitte på."
+          }
+        }
+      }
+    },
+    "Find the fill port on the bottom of the pod, where the arrow points. Leave the clear needle cap on." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finn fyllehullet på undersiden av podden, der pilen peker. La den gjennomsiktige beskyttelsen sitte på."
+          }
+        }
+      }
+    },
+    "If it went on crooked, it is fine to peel part of it off and stick it down again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Har du limt skjeivt, går det fint å rive litt av og feste på nytt."
+          }
+        }
+      }
+    },
+    "Insert the needle straight down into the fill port, completely vertical at 90 degrees." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stikk nålen rett ned i fyllehullet – helt vertikalt, 90 grader."
+          }
+        }
+      }
+    },
+    "Peel off the paper backing that covers the adhesive." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta av beskyttelsespapiret på limet."
+          }
+        }
+      }
+    },
+    "Pod Is Filled – Pair" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podden er fylt – parkoble"
+          }
+        }
+      }
+    },
+    "Prepare the site on your body where the pod will go. The skin should be clean and dry." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gjør klar stedet på kroppen der podden skal sitte. Huden skal være ren og tørr."
+          }
+        }
+      }
+    },
+    "Push the plunger slowly until the pod beeps 2 times." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fyll sakte til podden piper 2 ganger."
+          }
+        }
+      }
+    },
+    "Remove the clear needle cap from the pod. Check that the cannula is not sticking out." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta av den gjennomsiktige beskyttelsen på podden. Sjekk at kanylen ikke stikker ut."
+          }
+        }
+      }
+    },
+    "Snap off the blue needle cap from the pod. Check that the cannula is not sticking out." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knekk av den blå beskyttelsen på podden. Sjekk at kanylen ikke stikker ut."
+          }
+        }
+      }
+    },
+    "Start New Pod" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start ny pod"
+          }
+        }
+      }
+    },
+    "Step %1$d of %2$d" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steg %1$d av %2$d"
+          }
+        }
+      }
+    },
+    "Stick the pod on. Make sure all the adhesive edges lie as flat and smooth as possible, with no folds." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lim podden på. Pass på at alle limkantene ligger så rett og glatt som mulig, uten bretter."
+          }
+        }
+      }
+    },
+    "To put on a new pod, you first need to deactivate the current one.\n\nSlide the switch below to deactivate it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For å sette på en ny pod må du først deaktivere den nåværende.\n\nSkyv bryteren under for å deaktivere den."
+          }
+        }
+      }
+    },
+    "To put on a new pod, you first need to deactivate the old one.\n\nSlide the switch below to deactivate it. When it is done, you can remove the old pod from your body." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For å sette på en ny pod må du først deaktivere den gamle.\n\nSkyv bryteren under for å deaktivere den. Når det er gjort, kan du ta av den gamle podden."
+          }
+        }
+      }
+    },
+    "Use the syringe and needle that came with the pod. Draw a little over 100 units of insulin into the syringe." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruk sprøyten og nålen som følger med podden. Trekk opp litt over 100 enheter insulin i sprøyten."
+          }
+        }
+      }
+    },
+    "When you have heard the 2 beeps, keep the phone close to the pod and tap the button below to pair it with %1$@." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når du har hørt de 2 pipene: hold telefonen nær podden og trykk på knappen under for å parkoble den med %1$@."
+          }
+        }
+      }
+    },
+    "When you slide the switch below, the pod counts down and then inserts the needle." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Når du skyver bryteren under, teller podden ned og skyter så inn nålen."
+          }
+        }
+      }
     }
   },
   "version" : "1.1"

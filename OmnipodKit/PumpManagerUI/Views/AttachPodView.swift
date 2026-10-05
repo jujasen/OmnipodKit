@@ -24,21 +24,26 @@ struct AttachPodView: View {
     
     var didConfirmAttachment: () -> Void
     var didRequestDeactivation: () -> Void
-    var podTabColor: String  // "blue" for DASH or "clear" for Eros and Omnipod 5
+    var podType: PodType
     
     @State private var activeModal: Modal?
     
     var body: some View {
         GuidePage(content: {
             VStack {
-                LeadingImage("Pod")
+                PodChangeStepHeader(step: .attach)
+
+                AttachPodIllustration(podType: podType)
 
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Prepare site.", comment: "Label text for step one of attach pod instructions"),
-                        String(format: LocalizedString("Remove %1$@ needle cap and check cannula. Then remove paper backing.", comment: "Label text for step two of attach pod instructions (1: pod tab color"),
-                               podTabColor),
-                        LocalizedString("Check pod, apply to site, then confirm pod attachment.", comment: "Label text for step three of attach pod instructions")
+                        podType.tabColor == "blue" ?
+                            LocalizedString("Snap off the blue needle cap from the pod. Check that the cannula is not sticking out.", comment: "Attach pod step: remove blue needle cap") :
+                            LocalizedString("Remove the clear needle cap from the pod. Check that the cannula is not sticking out.", comment: "Attach pod step: remove clear needle cap"),
+                        LocalizedString("Peel off the paper backing that covers the adhesive.", comment: "Attach pod step: remove adhesive backing"),
+                        LocalizedString("Prepare the site on your body where the pod will go. The skin should be clean and dry.", comment: "Attach pod step: prepare site"),
+                        LocalizedString("Stick the pod on. Make sure all the adhesive edges lie as flat and smooth as possible, with no folds.", comment: "Attach pod step: apply pod with smooth edges"),
+                        LocalizedString("If it went on crooked, it is fine to peel part of it off and stick it down again.", comment: "Attach pod step: reapplying is fine"),
                     ])
                 }
                 .padding(.bottom, 8)
@@ -103,7 +108,7 @@ struct AttachPodView_Previews: PreviewProvider {
         NavigationView {
             ZStack {
                 Color(UIColor.secondarySystemBackground).edgesIgnoringSafeArea(.all)
-                AttachPodView(didConfirmAttachment: {}, didRequestDeactivation: {}, podTabColor: "clear")
+                AttachPodView(didConfirmAttachment: {}, didRequestDeactivation: {}, podType: PodType(podType: .productIdDash))
             }
         }
     }
